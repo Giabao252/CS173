@@ -42,18 +42,28 @@ def sentence_sorter():
 
     # all the sentences will be stored in the SENTENCES list using the split method
     sentences = text.split('.')
-    
-    print(f'{keyword} appears in:')
 
-    # check which if the sentences have the input keyword.
-    # if yes, append those to a new list
+    # print out 'keyword appears in:' if the input keyword is detected
+    for i in range(len(sentences)):
+        if keyword in sentences[i]:
+            print(f'{keyword} appears in:')
+
+    """
+    check each sentences to see if they have the input keyword
+    if yes, append them to a new list
+    """
 
     for sentence in sentences:
         sentences_with_word = list()
+
         if keyword in sentence.lower():
+
             sentences_with_word.append(sentence)
+
             for items in sentences_with_word:
+                # get the sentences' number by looping to get their indexes
                 for i in range(len(sentences) - 1):
+                    # if the output sentence match its index in the original 'sentence' list, print them out along with the output sentences
                     if sentences[i] == items:
                         print(i+1, items)
 
