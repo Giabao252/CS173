@@ -32,29 +32,22 @@ int main()
   cin >> t2_on >> t2_off;
   cin >> t_ups;
 
-  // time starts from 0 at midnight
-  int timestamp1 = 0;
-  int timestamp2 = 0;
-
   // we use the lights' activity cycle to track the time the package arrives
-  int cycle1 = t1_on + t2_off;
+  int cycle1 = t1_on + t1_off;
   int cycle2 = t2_on + t2_off;
 
-  while (timestamp1 < 1440 && timestamp2 < 1440)
-  {
-    timestamp1 += cycle1;
-    timestamp2 += cycle2;
+  int ups_in_cycle1 = t_ups % cycle1;
+  int ups_in_cycle2 = t_ups % cycle2;
 
-    if (timestamp1 == 1440 && timestamp2 == 1440) {
-      timestamp1 = timestamp1 - 1440;
-      timestamp2 = timestamp2 - 1440;
-    }
+  if (ups_in_cycle1 < t1_on && ups_in_cycle2 < t2_on) {
+    cout << "BOTH" << endl;
   }
-
-  //keep track of how many times the lighting cycles are repeated during the 1440 mins period
-  int n1 = timestamp1 / cycle1;
-  int n2 = timestamp2 / cycle2;
-
+  else if (ups_in_cycle1 < t1_on || ups_in_cycle2 < t2_on ) {
+    cout << "ONE" << endl;
+  }
+  else {
+    cout << "NONE" << endl;
+  }
 
   return 0;
 }

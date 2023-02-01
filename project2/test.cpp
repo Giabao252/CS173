@@ -4,9 +4,9 @@ using namespace std;
 int main()
 {
 
-    int value = 10;
-    cout << "value = " << endl
-         << 10 << endl;
+    int a = 5 % 6;
+
+    cout << a;
 
     return 0;
 }
