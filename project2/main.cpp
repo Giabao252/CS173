@@ -7,7 +7,7 @@
               is on and NONE otherwise.
 
 @Date: 2023/01/28
-@Updated: 2023/01/28
+@Updated: 2023/02/01
 
 */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 using namespace std;
 
+//declaring the main() function that contains all our code and logic
 int main()
 {
 
@@ -32,13 +33,24 @@ int main()
   cin >> t2_on >> t2_off;
   cin >> t_ups;
 
-  // we use the lights' activity cycle to track the time the package arrives
+  //determine each light's lighting cycles  
   int cycle1 = t1_on + t1_off;
   int cycle2 = t2_on + t2_off;
+
+  /*
+  Now, for each light, we have to check how many cycles it takes to reach the t_ups level , and where the
+  package's arrival is in the last cycle of that time period by getting the remainder between t_ups and 
+  each cycle, storing them in two ups_in_cycle<number> variables 
+  */
 
   int ups_in_cycle1 = t_ups % cycle1;
   int ups_in_cycle2 = t_ups % cycle2;
 
+  /*
+  if, from midnight to the time the package arrives, the package's arrival is <ups_in_cycle> minutes
+  in the final cycle, we will compare it to the time the lights are on during that cycle. If it's smaller,
+  then its when the light is on. If it's equal or larger, then its when the light is off.  
+  */
   if (ups_in_cycle1 < t1_on && ups_in_cycle2 < t2_on) {
     cout << "BOTH" << endl;
   }
