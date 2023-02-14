@@ -1,12 +1,13 @@
 /*
 
-@Authors: Daniel Luu and Caroline Cavalier
-@Description:
-
-@Key:
-@Quote's author:
+@Authors: Bao Luu and Caroline Cavalier
+@Description: This is the program that uses the Ceasar Cipher in order to decrypt encoded cipher texts that is inputted 
+              from the program from the users,returning the decrypted messages by passing the key to the main function,
+              and also returning the key values that was used to create thecipher text which is placed in the program by the users
+@Key: 7
+@Quote's author: Lady Gaga (Song: Born This Way)
 @Date: 2023/02/07
-@Updated: 2023/02/07
+@Updated: 2023/02/13
 
 */
 
@@ -18,45 +19,48 @@ using namespace std;
 
 void decryption(int input_key)
 {
-    // Reading several lines of inputs as the ciphertext has newlines
+    // declaring global variables 
     string text, temp;
+    string decrypted_text;
+
+    //each line of inputs will be stored in the temp variable 
     while (getline(cin, temp))
     {
         text = text + temp;
-    }
-    
-    int key_applied_nums = 0;
 
-    for (int i = 0; i < text.length(); i++)
-    {
-        // converting all the characters in the input string to lowercases for later conversion
-        text[i] = tolower(text[i]);
+        char text_chars;
+        int key_applied_nums = 0;
 
-        // if the text includes spaces/tabs/newlines, skip
-        if (text[i] == ' ')
+        //looping through the line of input string 
+        for (int i = 0; i < temp.length(); i++)
         {
-            continue;
+            temp[i] = tolower(temp[i]); // converting all the characters in the input string to lowercases for later conversion
+
+            // if the text includes whitespaces, append it directly to the decrypted string
+            if (isspace(temp[i]) == true)
+            {
+                decrypted_text += temp[i];
+            }
+            else
+            {
+                // converting characters to integers of range 0 to 25
+                text_chars = temp.at(i) - 97;
+                int converted = int(text_chars);
+
+                // shifting the integer values using the input key
+                int key_applied_nums = (converted - input_key) + 26;
+                int shifted_ints = key_applied_nums % 26;
+
+                // converting the decrypted representative integers back to ASCII values for final string char conversion
+                int decrypted_ascii = shifted_ints + 97;
+
+                decrypted_text += char(decrypted_ascii);
+            }
         }
-
-        // converting characters to integers of range 0 to 25
-        char x = text.at(i) - 97;
-        int converted = int(x);
-
-        //cout << converted << endl;
-
-        int key_applied_nums = (converted - input_key) + 26;
-
-        int cleaned_nums = key_applied_nums % 26;
-
-        //cout << cleaned_nums << endl;
-        int ascii = cleaned_nums + 97;
-
-        string decrypted_text;
-        decrypted_text = decrypted_text + char(ascii);
-
-        cout << decrypted_text << endl;
+        //after each line has been processed in the while loop, stop and move to a new line and continue the decryption process
+        decrypted_text += "\n";
     }
-    
+    cout << decrypted_text << endl;
 }
 
 int main(int argc, char *argv[])
