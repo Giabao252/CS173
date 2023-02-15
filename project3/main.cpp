@@ -37,7 +37,7 @@ void decryption(int input_key)
             temp[i] = tolower(temp[i]); // converting all the characters in the input string to lowercases for later conversion
 
             // if the text includes whitespaces, append it directly to the decrypted string
-            if (isspace(temp[i]) == true)
+            if (isspace(temp[i]))
             {
                 decrypted_text += temp[i];
             }
