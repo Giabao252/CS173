@@ -1,0 +1,22 @@
+list1 = 0
+list1 = 1 2 3 4 5 6 7 8 9 10
+list2 = 1 2 3 4 5 6 7 8 9 10
+
+list1.insert(50,10);
+list1.insert(0,0)
+list1.remove(1);
+list2 = 1 2 100 4 5 6 7 8 9 10
+list1 = 0 2 3 4 5 6 7 8 9 10 50
+
+list3 new empty
+list3 size = 0
+list3 empty
+
+list3 = list1+list2
+list3 = 0 2 3 4 5 6 7 8 9 10 50 1 2 100 4 5 6 7 8 9 10
+list3 size = 21
+list3 not empty
+
+list3.clear()
+list3 size = 0
+list3 empty
