@@ -40,6 +40,20 @@ private:
 	int size;	  // the number of items in the list
 
 	// YOU CAN ADD METHODS/VARIABLES HERE
+	void add_memory()
+	{
+		capacity = capacity * 2;
+		T *newList = new T[capacity];
+
+		for (int i = 0; i < capacity; i++)
+		{
+			newList[i] = list[i];
+		}
+
+		delete[] list;
+
+		list = newList;
+	}
 };
 
 #include "List.cpp"
