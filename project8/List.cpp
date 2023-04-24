@@ -4,6 +4,8 @@
 #include <iostream>
 #include "List.h"
 using namespace std;
+
+
 template <class T>
 List<T>::List(void)
 {
@@ -250,7 +252,7 @@ void List<T>::remove(int index)
         }
         else {
             current->next = current->next->next;
-            delete to_delete;
+                delete to_delete;
         }
     }
 }
@@ -258,12 +260,16 @@ void List<T>::remove(int index)
 template <class T> 
 List<T> List<T>::operator+(const List<T> &mylist) const {
     List<T> concat;
+
+    concat.head = NULL;
+
     if (head == NULL && mylist.head == NULL) {
         concat.head = NULL;
         return concat;
     }
     else if (mylist.head == NULL) {
-        return *this;
+        concat = *this;
+        return concat;
     }
     else if (head == NULL) {
         concat = mylist;
@@ -275,7 +281,7 @@ List<T> List<T>::operator+(const List<T> &mylist) const {
         tPtr = concat.head;
 
         while (tPtr->next != NULL) {
-            tPtr = tPtr->next;
+            tPtr = tPtr->next;  
         }
 
         tPtr->next = mylist.head; 
