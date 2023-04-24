@@ -167,14 +167,13 @@ T &List<T>::operator[](int index)
         index_counter++;
         iPtr = iPtr->next;
     }
-    T value_of_index = iPtr->item;
-    return value_of_index;
+    return (iPtr->item);
 }
 
 template <class T>
 void List<T>::insert(const T &item, int index)
 {
-    if (index < 0 || index > length() - 1)
+    if (index < 0 || index > length())
     {
         throw std::invalid_argument("Invalid index");
     }
@@ -203,6 +202,7 @@ void List<T>::insert(const T &item, int index)
             index_counter++;
             current = current->next;
         }
+        
         Node *new_node;
         new_node = new Node;
         new_node->item = item;
@@ -237,21 +237,20 @@ void List<T>::remove(int index)
         Node *current = head;
         int index_counter = 0;
 
-        while (index_counter < index)
+        while (index_counter < index-1)
         {
             index_counter++;
             current = current->next;
         }
 
         to_delete = current->next;
-        delete to_delete;
         if (index == length() - 1)
         {
             current->next = NULL;
         }
-        else
-        {
+        else {
             current->next = current->next->next;
+            delete to_delete;
         }
     }
 }
