@@ -174,31 +174,36 @@ T &List<T>::operator[](int index)
 template <class T>
 void List<T>::insert(const T &item, int index)
 {
-    if (index < 0 || index > length() - 1) {
+    if (index < 0 || index > length() - 1)
+    {
         throw std::invalid_argument("Invalid index");
     }
 
-    if (index == 0) {
-        Node* new_node;
+    if (index == 0)
+    {
+        Node *new_node;
         new_node = new Node;
         new_node->item = item;
-        new_node->next = head; //linking the new node to the old first node of the list
+        new_node->next = head; // linking the new node to the old first node of the list
         head = new_node;
     }
 
-    else if (index == length()) {
+    else if (index == length())
+    {
         append(item);
     }
 
-    else {
-        Node* current = head;
+    else
+    {
+        Node *current = head;
         int index_counter = 0;
 
-        while (index_counter < index) {
+        while (index_counter < index)
+        {
             index_counter++;
             current = current->next;
         }
-        Node* new_node; 
+        Node *new_node;
         new_node = new Node;
         new_node->item = item;
 
@@ -215,34 +220,44 @@ void List<T>::remove(int index)
         throw std::out_of_range("List index out of range");
     }
 
-    if (index < 0 || index > length() - 1) {
+    if (index < 0 || index > length() - 1)
+    {
         throw std::invalid_argument("Invalid index");
     }
 
-    if (index == 0) {
-        Node* old_head = head;
+    if (index == 0)
+    {
+        Node *old_head = head;
         head = head->next;
         delete old_head;
     }
-    else {
-        Node* to_delete;
-        Node* current = head;
+    else
+    {
+        Node *to_delete;
+        Node *current = head;
         int index_counter = 0;
 
-        while (index_counter < index) {
+        while (index_counter < index)
+        {
             index_counter++;
-            current = current->next; 
+            current = current->next;
         }
-        
+
         to_delete = current->next;
         delete to_delete;
-        if (index == length() - 1) {
+        if (index == length() - 1)
+        {
             current->next = NULL;
         }
-        else {
+        else
+        {
             current->next = current->next->next;
         }
     }
+}
+
+template <class T> 
+List<T> List<T>::operator+(const List<T> &mylist) const {
     
 }
 
