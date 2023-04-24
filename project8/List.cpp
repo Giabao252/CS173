@@ -5,12 +5,23 @@
 #include "List.h"
 using namespace std;
 
-
+/*
+DEFAULT CONSTRUCTOR -> Creates an empty linked list
+PARAMETERS: none
+RETURN: none
+*/
 template <class T>
 List<T>::List(void)
 {
     head = NULL;
 }
+
+/*
+DESTRUCTOR 
+PARAMETERS: none
+RETURN: none
+FUNCTIONALITY: freeing the memory allocated to each node in the list when the list is no longer needed
+*/
 
 template <class T>
 List<T>::~List(void)
@@ -26,6 +37,13 @@ List<T>::~List(void)
 
     head = NULL;
 }
+
+/*
+COPY CONSTRUCTOR 
+PARAMETERS: const reference to the passed object mylist
+RETURN: none
+FUNCTIONALITY: performs deep copy on a linked list
+*/
 
 template <class T>
 List<T>::List(const List<T> &mylist)
@@ -60,6 +78,12 @@ List<T>::List(const List<T> &mylist)
         }
     }
 }
+
+/*
+operator= 
+PARAMETERS: const reference to the passed object mylist
+RETURN: the existing linked list with all its value replaced by mylist's values
+*/
 
 template <class T>
 List<T> List<T>::operator=(const List<T> &mylist)
@@ -102,6 +126,12 @@ List<T> List<T>::operator=(const List<T> &mylist)
     return *this;
 }
 
+/*
+TO_STRING 
+PARAMETERS: none
+RETURN: a string of the list elements 
+*/
+
 template <class T>
 string List<T>::to_string(void) const
 {
@@ -123,6 +153,13 @@ string List<T>::to_string(void) const
 
     return stream.str();
 }
+
+/*
+APPEND 
+PARAMETERS: const reference to the passed item of any data type
+RETURN: none
+FUNCTIONALITY: append the passed item to the back of the linked list 
+*/
 
 template <class T>
 void List<T>::append(const T &item)
@@ -149,6 +186,12 @@ void List<T>::append(const T &item)
     }
 }
 
+/*
+operator[]
+PARAMETERS: index of integer type
+RETURN: the value in the linked list that corresponds to the given index position
+*/
+
 template <class T>
 T &List<T>::operator[](int index)
 {
@@ -171,6 +214,14 @@ T &List<T>::operator[](int index)
     }
     return (iPtr->item);
 }
+
+/*
+INSERT 
+PARAMETERS: 
+- const reference to the passed item of any data type 
+- index of integer type
+RETURN: insert a new item in the existing linked list in a specified index position
+*/
 
 template <class T>
 void List<T>::insert(const T &item, int index)
@@ -213,6 +264,12 @@ void List<T>::insert(const T &item, int index)
         current->next = new_node;
     }
 }
+
+/*
+TO_STRING FUNCTION
+PARAMETERS: none
+RETURN: a string of the list elements separated by commas
+*/
 
 template <class T>
 void List<T>::remove(int index)
@@ -257,6 +314,12 @@ void List<T>::remove(int index)
     }
 }
 
+/*
+operator+
+PARAMETERS: const reference to the passed object named mylist
+RETURN: a new object that is the concatenation of the existing list and mylist
+*/
+
 template <class T> 
 List<T> List<T>::operator+(const List<T> &mylist) const {
     List<T> concat;
@@ -289,6 +352,12 @@ List<T> List<T>::operator+(const List<T> &mylist) const {
     }
 }
 
+/*
+LENGTH 
+PARAMETERS: none
+RETURN: the length of the list as an integer type 
+*/
+
 template <class T>
 int List<T>::length(void) const
 {
@@ -304,6 +373,12 @@ int List<T>::length(void) const
     return size;
 }
 
+/*
+ISEMPTY
+PARAMETERS: none
+RETURN: boolean type - true if the linked list is empty and vice versa
+*/
+
 template <class T>
 bool List<T>::isEmpty(void) const
 {
@@ -317,6 +392,13 @@ bool List<T>::isEmpty(void) const
         return false;
     }
 }
+
+/*
+CLEAR
+PARAMETERS: none    
+RETURN: none
+FUNCTIONALITY: delete the entire linked list 
+*/
 
 template <class T>
 void List<T>::clear(void)
