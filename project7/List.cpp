@@ -124,7 +124,7 @@ T &List<T>::operator[](int index)
     return *indexPtr;
 }
 
-/*
+/*d
 INSERT FUNCTION
 PARAMETERS:
 - const reference to 'item' of type T
@@ -145,7 +145,7 @@ void List<T>::insert(const T &item, int index)
             add_memory();
         }
         for (int i = size - 1; i > index; i--)
-        {
+        {                                  
             list[i] = list[i - 1];
         }
         list[index] = item;
