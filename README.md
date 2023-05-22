@@ -6,3 +6,6 @@ List of projects:
 3. Caesar Cipher
 4. Roman numerals
 5. DNA Search *
+6. Complex Number
+7. Array-based List ADT implementation *
+8. Linked list ADT implementation *

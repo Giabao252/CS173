@@ -309,7 +309,7 @@ void List<T>::remove(int index)
         }
         else {
             current->next = current->next->next;
-                delete to_delete;
+            delete to_delete;
         }
     }
 }
